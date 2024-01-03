@@ -1,4 +1,4 @@
-package cyber;
+package cellular;
 
 public class Main {
 

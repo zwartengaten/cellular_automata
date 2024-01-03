@@ -1,4 +1,4 @@
-package cyber;
+package math;
 
 public class Point {
 	public int x;

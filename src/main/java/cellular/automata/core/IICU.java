@@ -1,6 +1,6 @@
-package cyber.automata.core;
+package cellular.automata.core;
 
-import cyber.Point;
+import math.Point;
 
 public interface IICU {
 	short[][] getGrid();

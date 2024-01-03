@@ -1,9 +1,10 @@
-package cyber.automata.electro;
+package cellular.automata.electro;
 
 import java.util.Arrays;
 
-import cyber.Point;
-import cyber.automata.core.AbsICU;
+import cellular.automata.core.AbsICU;
+import math.MathUtils;
+import math.Point;
 
 public class ElectruICU2 extends AbsICU{
 	public static double maxOf(double[] arr) {
@@ -100,7 +101,7 @@ public class ElectruICU2 extends AbsICU{
 		for(int i = 0; i < n; i++)
 			for(int j = 0; j < m; j++)
 				if( ((chargeOf(p(i,j)) * chargeOf(p(row,col))) < 0))
-					res[getDirection(row,col,i,j)] += holomorphicSummation(row, col, i, j);
+					res[MathUtils.getDirection(row,col,i,j)] += holomorphicSummation(row, col, i, j);
 
 
 		return res;
@@ -110,30 +111,9 @@ public class ElectruICU2 extends AbsICU{
 		return abs(chargeOf(p(i,j))) * getDistanceHolomorphic(row,col,i,j);
 	}
 
-	public static int getDirection(int orX, int orY, int x, int y) {
-		// Calculate the angle alpha in degrees
-		final double deltaY =  y - orY;
-		final double deltaX = x - orX;
-
-		double alpha = Math.toDegrees(Math.atan2(deltaX, deltaY));
-		// Ensure alpha is positive and in the range [0, 360)
-		alpha = alpha - 270;
-		if (alpha < 0)
-			alpha += 360;
-		if (alpha < 0)
-			alpha += 360;
-		// Calculate the direction based on alpha
-		final int direction = (int) Math.floor((alpha + 22.5) / 45) % 8;
-		return direction;
-	}
 
 	private double getDistanceHolomorphic(int orX, int orY, int x, int y) {
-		// Calculate the angle alpha in degrees
-		final double deltaY =  y - orY;
-		final double deltaX = x - orX;
-
-		final double distance =Math.sqrt( diagonalSqr / ((deltaX * deltaX) + (deltaY * deltaY)));
-		return distance;
+		return  MathUtils.getDistanceHolomorphic(diagonalSqr, orX, orY, x, y);
 	}
 
 	public boolean isNeutral(int x) {
@@ -228,7 +208,6 @@ public class ElectruICU2 extends AbsICU{
 
 	@Override
 	public void setPoints(Point[][] points) {
-		// TODO Auto-generated method stub
 
 	}
 

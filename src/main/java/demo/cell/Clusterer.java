@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import cyber.Point;
+import math.Point;
 
 public class Clusterer {
 	private static final String SHORT_NOT_INT = "More than 32,767 cell types is not allowed.";

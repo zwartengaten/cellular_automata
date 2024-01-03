@@ -1,9 +1,10 @@
-package cyber.automata.electro;
+package cellular.automata.electro;
 
 import java.util.Arrays;
 
-import cyber.Point;
-import cyber.automata.core.AbsICU;
+import cellular.automata.core.AbsICU;
+import math.MathUtils;
+import math.Point;
 
 public class ElectruICU extends AbsICU{
 	public static double maxOf(double[] arr) {
@@ -20,11 +21,11 @@ public class ElectruICU extends AbsICU{
 	public static Point p (int x, int y) {
 		return new Point(x,y);
 	}
-	private short[] charges;
-	private short[][] electroField;
-	private boolean neutral[];
+	private volatile short[] charges;
+	private volatile short[][] electroField;
+	private volatile boolean neutral[];
 	private double diagonalSqr;
-	private int[] counter;
+	private volatile int[] counter;
 
 	public ElectruICU(int rows, int cols, Point[][] w) {
 		super(rows, cols, w);
@@ -67,10 +68,10 @@ public class ElectruICU extends AbsICU{
 		final int type = absTypeOf(p(row,col));
 		if(isNeutral(p(row,col)) || himOrNeighGenerators(row,col))
 			return false;
-		if((counter[type] >= 1000)
-				|| (sameTypeNeigh(row, col) >= 3)
-				|| (sameTypeNeigh(row, col) <= 0)
-				|| (nonnanNeigh(row,col) < 1)) {
+		if((counter[type] >= 10000)
+				|| (sameTypeNeigh(row, col) >= 5)
+				|| (sameTypeNeigh(row, col) <= -1)
+				|| (nonnanNeigh(row,col) < 0)) {
 			counter[type]--;
 			return true;
 		}
@@ -100,8 +101,7 @@ public class ElectruICU extends AbsICU{
 		for(int i = 0; i < n; i++)
 			for(int j = 0; j < m; j++)
 				if( ((chargeOf(p(i,j)) * chargeOf(p(row,col))) < 0))
-					res[getDirection(row,col,i,j)] += holomorphicSummation(row, col, i, j);
-
+					res[MathUtils.getDirection(row,col,i,j)] += holomorphicSummation(row, col, i, j);
 
 		return res;
 	}
@@ -110,31 +110,12 @@ public class ElectruICU extends AbsICU{
 		return abs(chargeOf(p(i,j))) * getDistanceHolomorphic(row,col,i,j);
 	}
 
-	public static int getDirection(int orX, int orY, int x, int y) {
-		// Calculate the angle alpha in degrees
-		final double deltaY =  y - orY;
-		final double deltaX = x - orX;
 
-		double alpha = Math.toDegrees(Math.atan2(deltaX, deltaY));
-		// Ensure alpha is positive and in the range [0, 360)
-		alpha = alpha - 270;
-		if (alpha < 0)
-			alpha += 360;
-		if (alpha < 0)
-			alpha += 360;
-		// Calculate the direction based on alpha
-		final int direction = (int) Math.floor((alpha + 22.5) / 45) % 8;
-		return direction;
-	}
 
 	private double getDistanceHolomorphic(int orX, int orY, int x, int y) {
-		// Calculate the angle alpha in degrees
-		final double deltaY =  y - orY;
-		final double deltaX = x - orX;
-
-		final double distance =Math.sqrt( diagonalSqr / ((deltaX * deltaX) + (deltaY * deltaY)));
-		return distance;
+		return MathUtils.getDistanceHolomorphic(diagonalSqr, orX, orY, x, y);
 	}
+
 
 	public boolean isNeutral(int x) {
 		return x == 0;
@@ -199,10 +180,8 @@ public class ElectruICU extends AbsICU{
 	public boolean rule(int row, int col, int k, double... data) {
 
 		final Point p = p(row, col);
-		//System.out.println(charges[absTypeOf(p)]);
 		if((chargeOf(p) == 0) || isNeutral(p) || (counter[absTypeOf(p)]>=1000))
 			return false;
-		//System.out.println("f");
 		final Point q = p(row + ROW_OFFSETS[k],col + COL_OFFSETS[k]);
 		final double max = maxOf(data);
 		if(typeOf(q) == NAN)
@@ -228,7 +207,6 @@ public class ElectruICU extends AbsICU{
 
 	@Override
 	public void setPoints(Point[][] points) {
-		// TODO Auto-generated method stub
 
 	}
 

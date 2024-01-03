@@ -1,4 +1,4 @@
-package demo;
+package cyber.game;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

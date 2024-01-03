@@ -1,4 +1,4 @@
-package cyber.automata.core;
+package cellular.automata.core;
 
 public class CyclicException extends Exception {
 

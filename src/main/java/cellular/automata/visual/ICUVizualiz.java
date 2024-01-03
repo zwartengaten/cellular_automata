@@ -1,4 +1,4 @@
-package cyber.automata.visual;
+package cellular.automata.visual;
 
 import java.awt.Graphics;
 
@@ -7,9 +7,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import cyber.Point;
-import cyber.automata.core.CyclicException;
-import cyber.automata.core.IICU;
+import cellular.automata.core.CyclicException;
+import cellular.automata.core.IICU;
+import math.Point;
 
 public class ICUVizualiz extends JPanel{
 	private int CELL_SIZE = 5;
