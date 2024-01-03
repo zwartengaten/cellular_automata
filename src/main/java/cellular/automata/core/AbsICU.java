@@ -1,4 +1,4 @@
-package cyber.automata.core;
+package cellular.automata.core;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import cyber.Point;
+import math.Point;
+
 
 public abstract class AbsICU implements IICU {
 	public static final int[] COL_OFFSETS = { 0,  1, 1, 1, 0, -1, -1, -1};
@@ -164,6 +165,11 @@ public abstract class AbsICU implements IICU {
 	@Override
 	public void shutdown() {
 		executorService.shutdown();
+	}
+
+	@Override
+	public void setPoints(Point[][] points) {
+		this.w = points;
 	}
 
 }

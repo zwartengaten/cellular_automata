@@ -1,12 +1,12 @@
-package cyber.automata;
-import cyber.Point;
-import cyber.automata.Auto.cmap;
-import cyber.automata.core.IICU;
+package cellular.automata;
+import cellular.automata.Auto.cmap;
+import cellular.automata.core.IICU;
+import math.Point;
 public class VisualDebug {
 	public static void main(String... args) {
 		//mandel();
-		snow();
-		//entropy();
+		//snow();
+		entropy();
 	}
 
 	@SuppressWarnings("unused")

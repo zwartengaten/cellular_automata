@@ -1,20 +1,18 @@
-package cyber.automata;
+package cellular.automata;
 
-import cyber.Point;
-import cyber.automata.core.AbsICU;
+import cellular.automata.core.AbsICU;
+import math.Point;
 
 public class Mandel extends AbsICU{
 
 	public Mandel(int rows, int cols, Point[][] w) {
 		super(rows, cols, w);
-		// TODO Auto-generated constructor stub
 	}
 
 
 	@Override
 	public boolean deathRule(int row, int col) {
-		if((sameTypeNeigh(row, col) >= 4)
-				)//|| getDistanceHolomorphic((int)centerX, (int)centerY, col, row) > centerX/10 )
+		if((sameTypeNeigh(row, col) >= 4))
 			return true;
 		return false;
 	}
@@ -50,12 +48,10 @@ public class Mandel extends AbsICU{
 
 	@Override
 	public boolean rule(int row, int col, int k, double... data) {
-		// Demonstrative expansion rule: Cells expand based on the Mandelbrot-like criteria.
 		return data[k] > 0.3;
 	}
 
 	private double mandelbrotCriteria(double x, double y) {
-		// Calculate a Mandelbrot-like criteria for a given (x, y) coordinate.
 		double real = x;
 		double imag = y;
 		int maxIterations = 70;
@@ -74,7 +70,6 @@ public class Mandel extends AbsICU{
 
 	@Override
 	public void setPoints(Point[][] points) {
-		// TODO Auto-generated method stub
 
 	}
 

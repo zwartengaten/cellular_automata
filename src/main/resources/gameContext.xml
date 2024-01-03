@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- Define UserService bean -->
-    <bean id="game" class="cyber.ShootingGame">
+    <bean id="game" class="cyber.game.ShootingGame">
     
         <!-- Bean properties and dependencies can be defined here -->
         <!-- For example, constructor injection: -->

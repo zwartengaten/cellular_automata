@@ -1,15 +1,15 @@
-package cyber.automata;
+package cellular.automata;
 
 import java.awt.Color;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import cyber.Point;
-import cyber.automata.core.IICU;
-import cyber.automata.visual.ICUCollorMapper;
-import cyber.automata.visual.ICUVizualiz;
-import cyber.automata.visual.Icmap;
-import cyber.automata.visual.RandCmap;
+import cellular.automata.core.IICU;
+import cellular.automata.visual.ICUCollorMapper;
+import cellular.automata.visual.ICUVizualiz;
+import cellular.automata.visual.Icmap;
+import cellular.automata.visual.RandCmap;
+import math.Point;
 
 public class Auto {
 

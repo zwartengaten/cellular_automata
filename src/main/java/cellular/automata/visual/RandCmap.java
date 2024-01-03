@@ -1,4 +1,4 @@
-package cyber.automata.visual;
+package cellular.automata.visual;
 
 import java.awt.Color;
 

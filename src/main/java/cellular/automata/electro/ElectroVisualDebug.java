@@ -1,14 +1,14 @@
-package cyber.automata.electro;
+package cellular.automata.electro;
 
-import java.awt.Color;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import cyber.Point;
-import cyber.automata.visual.ICUCollorMapper;
-import cyber.automata.visual.ICUVizualiz;
+import cellular.automata.visual.ICUVizualiz;
+import cellular.automata.visual.Icmap;
+import cellular.automata.visual.RandCmap;
+import math.Point;
 
-public class Main {
+public class ElectroVisualDebug {
 	public static Point p (int x, int y) {
 		return new Point(x,y);
 	}
@@ -18,8 +18,8 @@ public class Main {
 
 		final ElectruICU electro = new ElectruICU(100, 100, points);
 		electro.init();
-		final ICUCollorMapper map = new ICUCollorMapper();
-		colorSetter(map);
+		final Icmap map = colorSetter();
+
 		final CompletableFuture<Void> future1 = CompletableFuture
 				.runAsync(()->{electroSet(points, electro);});
 		final CompletableFuture<Void> future2 = CompletableFuture
@@ -41,18 +41,19 @@ public class Main {
 	public static void electroSet(final Point[][] points, final ElectruICU electro) {
 
 		electro.negativeCharge(points[9][0]);
-		//electro.negativeCharge(points[5][0]);
-		//electro.negativeCharge(points[4][0]);
+		electro.negativeCharge(points[5][0]);
+		electro.negativeCharge(points[4][0]);
 		electro.positiveCharge(points[2][0]);
-		//electro.positiveCharge(points[1][0]);
-		//electro.positiveCharge(points[7][0]);
-		//electro.positiveCharge(points[3][0]);
-		electro.positiveCharge(points[6][0]);
-		//electro.negativeCharge(points[8][0]);
-		final Point p = points[0][0];
+		electro.positiveCharge(points[1][0]);
+		electro.positiveCharge(points[7][0]);
+		//electro.negativeCharge(points[0][0]);
+		electro.positiveCharge(points[3][0]);
+		//electro.positiveCharge(points[6][0]);
+		electro.negativeCharge(points[8][0]);
+		//final Point p = points[0][0];
 		//		final Point a = p(0,0);
 		//		final Point b = p(99,99);
-		electro.negativeCharge(p);
+		//electro.negativeCharge(p);
 		//electro.positiveCharge(points[4][0]);
 		//		new Thread(() -> {
 		//
@@ -84,15 +85,16 @@ public class Main {
 	public static void pointSet(final Point[][] points) {
 		points[0][0] = p(99,0);
 
-		points[1][0] = p(0,49);
-		points[2][0] = p(99,50);
-		points[3][0] = p(49,0);
+		points[1][0] = p(0,0); //
+		points[2][0] = p(99,0); //
+		points[3][0] = p(49,0); //
 		points[4][0] = p(50,50);
 		points[5][0] = p(99,99);
-		points[6][0] = p(50,99);
-		points[7][0] = p(51,25);
+		points[6][0] = p(50,99); //
+		points[7][0] = p(0,7); //
 		points[8][0] = p(25,50);
-		points[9][0] = p(0,75);
+		points[9][0] = p(0,99);
+
 
 		//
 		//		points[4][0] = p(100,100);
@@ -126,17 +128,7 @@ public class Main {
 		//		points[21][0] = p(297,197);
 	}
 
-	public static void colorSetter(final ICUCollorMapper map) {
-		map.addColor(1, Color.MAGENTA);
-		map.addColor(-1, Color.MAGENTA);
-		map.addColor(2, Color.GREEN);
-		map.addColor(-2, Color.GREEN);
-		map.addColor(3, Color.BLUE);
-		map.addColor(-3, Color.BLUE);
-		map.addColor(4, Color.ORANGE);
-		map.addColor(-4, Color.ORANGE);
-		map.addColor(5, Color.PINK);
-		map.addColor(-5, Color.PINK);
-		map.addColor(0, Color.GRAY);
+	public static Icmap colorSetter() {
+		return new RandCmap();
 	}
 }
