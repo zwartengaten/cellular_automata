@@ -1,14 +1,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>neo</groupId>
-  <artifactId>cellular_automata</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
-        <version>5.3.9</version> <!-- Update to the latest version available -->
-    </dependency>
-</dependencies>
+ <groupId>com.zwartengaten</groupId>
+    <artifactId>cellular_automata</artifactId>
+    <version>1.0.0</version>
+    
+    <!-- Project metadata -->
+    <name>Cellular Automata</name>
+    <description>Project containing various cellulat automata implementations.</description>
+    <url>https://github.com/zwartengaten/cellular_automata</url>
+
+    <!-- License information -->
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+
+    <!-- Developer information -->
+    <developers>
+        <developer>
+            <id>zwartengaten</id>
+            <name>Rares Polenciuc</name>
+            <email>zwartengaten@gmail.com</email>
+        </developer>
+    </developers>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.9</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
