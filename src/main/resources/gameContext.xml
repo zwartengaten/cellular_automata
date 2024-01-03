@@ -1,0 +1,14 @@
+<!-- applicationContext.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define UserService bean -->
+    <bean id="game" class="cyber.ShootingGame">
+    
+        <!-- Bean properties and dependencies can be defined here -->
+        <!-- For example, constructor injection: -->
+        <!-- <constructor-arg ref="userRepository" /> -->
+    </bean>
+
+</beans>
