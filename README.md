@@ -15,7 +15,7 @@ To get started with the project, follow these steps:
 1. Clone the repository to your local machine:
 
     ```
-    git clone (https://github.com/zwartengaten/cellular_automata)
+    git clone https://github.com/zwartengaten/cellular_automata
     ```
 
 2. Open the project in your preferred Java IDE.
